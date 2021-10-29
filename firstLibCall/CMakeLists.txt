@@ -8,3 +8,7 @@ project(firstLibCall)
 include_directories(src)
 
 set(CMAKE_CXX_STANDARD 17)
+
+
+
+
