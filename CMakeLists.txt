@@ -11,3 +11,5 @@ add_subdirectory(matrixApp)
 
 add_subdirectory(Copyingclass)
 add_subdirectory(lab5)
+add_subdirectory(lab6_node)
+add_subdirectory(lab6_vector)
