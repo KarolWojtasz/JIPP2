@@ -1,0 +1,7 @@
+1234;Turbo;turbo;1200
+124;Intercooler;Intercooler;650
+13544;Wtryski;Deka 630cc;600
+18468;tlumik;tlumik;123
+42;Turbo;td04HL-23T;1200
+6335;a;a;143
+26501;qwerty;qwerty;1.12
