@@ -11,6 +11,8 @@
 #include <sstream>
 #include <Product.h>
 #include <Printer.h>
+#include <Polymorphism.h>
+
 using namespace std;
 
 vector<User> userList;
@@ -18,6 +20,7 @@ vector<Product> productList;
 
 int main(int argc, char* argv[]){
     try {
+
 
 
 
@@ -52,25 +55,29 @@ int main(int argc, char* argv[]){
         productList.push_back(Product(stoi(v2[0]), v2[1], v2[2],stod(v2[3])));
     }
     Productplik.close();
+    }catch (...){
+        cout<<"Wystapil krytyczny problem z wczytywaniem plikow"<<endl;
+        return 0;
+    }
 
 
-
+    try{
     // blad ilosci argumentow
     if(argc!=2){
         help();
         return(0);
     // argument wywolania dla klienta
     }else if(string("Klient")==string(argv[1])){
+    while(1){
 
-        cout<<"Witaj w panelu klienta."<<endl<<"Jesli chcesz sie zalogowac wybierz 1, a jesli nie masz jeszcze konta i chcesz sie zarejestrowac wybierz 2"<<endl;
+
+        cout<<"Witaj w panelu klienta."<<endl<<"Jesli chcesz sie zalogowac wybierz 1, chcesz sie zarejestrowac wybierz 2, aby zakonczyc wybierz 3"<<endl;
         int login;
-        while(1) {
-            login = validateCin("");
-            if(login==1||login==2){
-                break;
-            }else{
-                cout<<"Wprowadz prawidlowy numer"<<endl;
-            }
+
+        login = validateCin("");
+        if(login==3){
+            cout<<"Konczenie pracy programu."<<endl;
+            return 0;
         }
         //rejestracja uzytkownika
         if(login ==2 ){
@@ -141,17 +148,19 @@ int main(int argc, char* argv[]){
                         if(zakonczProgram!=4)
                             cout<<"Podano zly parametr!"<<endl;
                         cout<<"Konczenie pracy programu"<<endl;
+                        return 0;
                         break;
+
                 }
 
             }
         }
-
+    }
     //argument wywolania admin
     }else if(string("Administrator")==string(argv[1])||string("Admin")==string(argv[1])){
 
         Printer <string>k("Witaj w panelu administratora");
-        cout<<k.getVariable1();
+        //cout<<k.getVariable1();
         !k;
         int zakonczProgram = 1;
         while(zakonczProgram <= 5) {
@@ -229,7 +238,10 @@ int main(int argc, char* argv[]){
                     default:
                         if(zakonczProgram!=6)
                             cout<<"Podano zly parametr, a podobno jestes adminem..."<<endl;
-                            cout<<"Konczenie pracy programu"<<endl;
+                            Printer <string>finito("Konczenie pracy programu");
+                            cout<<finito.getVariable1();
+
+                            cout<<""<<endl;
                         break;
                 }
 
@@ -240,9 +252,10 @@ int main(int argc, char* argv[]){
 
 
     }else{
-        cout<<"Podano bledne parametry wywolania."<<endl;
+        PolymorphismParent* finish = new PolymorphismChild;
+        finish->dowork();
+        delete finish;
         help();
-
 
     }
 
